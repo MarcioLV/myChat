@@ -1,0 +1,29 @@
+.message-container{
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+}
+
+.message{
+  width: fit-content;
+  max-width: 60%;
+  padding: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  Word-wrap: break-Word
+}
+
+.myMessage-container{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.myMessage{
+  background-color: #dcf8c6;
+}
+
+.otherMessage{
+  background-color: #fff;
+}
