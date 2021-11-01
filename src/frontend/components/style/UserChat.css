@@ -1,0 +1,49 @@
+.username-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
+  background: #ededed;
+  border-left: 1px solid grey;
+}
+
+.username-container button {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: none;
+  font-size: 35px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.username-chatName{
+  display: flex;
+  align-items: center;
+}
+
+.username-figure{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 15px;
+  cursor: pointer;
+  background-color: rgb(156, 156, 214);
+}
+
+.username_backButton img{
+width: 30px;
+}
+
+.imgAvatar{
+  width: 40px;
+}
+
+.notImgAvatar{
+  width: 30px;
+}

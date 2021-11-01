@@ -1,7 +1,8 @@
 export default {
   user: {
     _id: null,
-    name: ''
+    name: '',
+    avatar: ''
   },
   chats: [],
   chat: {

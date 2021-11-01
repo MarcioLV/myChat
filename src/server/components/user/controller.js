@@ -1,26 +1,39 @@
 const store = require("../../store/mysql")
-
-const { nanoid } = require("nanoid")
+const config = require("../../../../config");
 
 const TABLA = "users"
 
-function list(){
-  return store.list(TABLA)
+function list(filterName){
+  return store.list(TABLA, filterName)
 }
 
 function getUser(filterName){
   return store.getUser(TABLA, filterName)
 }
 
-function addUser(name){
+async function addUser(name){
+  console.log("name", name);
   if(!name){
     return Promise.reject('invalid name')
   }
-  const user = {
-    _id: nanoid(),
-    username: name
+  const taken = await store.list(TABLA, name)
+  console.log("taken", taken);
+  if(taken){
+    console.log(false);
+    return false
   }
-  return store.addUser(TABLA, user)
+  // const user = {name: name}
+  const add = await store.addUser(TABLA, name)
+  return add
+}
+
+async function addAvatar(user, avatar){
+  let fileUrl = ''
+  if(avatar){
+    fileUrl = `${config.api.host}:${config.api.port}/files/avatars/${avatar.filename}`;
+  }
+  const data = store.addAvatar(TABLA, user, fileUrl);
+  return {...data, file: fileUrl}
 }
 
 // function getUser(filterName){
@@ -33,4 +46,5 @@ module.exports = {
   list,
   addUser,
   getUser,
+  addAvatar
 }

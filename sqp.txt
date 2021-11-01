@@ -1,0 +1,79 @@
+//crear tabla
+CREATE TABLE IF NOT EXISTS
+users (user_id INTEGER unsigned primary key auto_increment not null,
+name varchar(64) not null,
+avatar varchar(256));
+
+CREATE TABLE IF NOT EXISTS
+chats (chat_id INTEGER unsigned primary key auto_increment not null,
+user1_id INTEGER unsigned not null,
+user2_id INTEGER unsigned not null);
+
+CREATE TABLE IF NOT EXISTS
+messages (message_id INTEGER unsigned primary key auto_increment not null,
+chat_id INTEGER unsigned not null,
+user INTEGER unsigned not null,
+message text,
+file varchar(256),
+date varchar(64) not null,
+seen tinyint(1) not null default 0);
+
+
+//sacar el ultimo message_id de un chat_id
+SELECT 
+MAX(message_id)
+FROM messages
+WHERE chat_id = id
+
+//todos los chats_id con su maximo message_id
+SELECT chat_id, max(message_id) 
+FROM messages
+GROUP BY chat_id 
+ORDER BY chat_id;
+
+//chats seleccionados con su maximo message_id ordenado por message_id
+SELECT chat_id, max(message_id) 
+FROM messages
+WHERE chat_id = 1 OR chat_id = 2 OR chat_id = 3 OR chat_id = 4
+GROUP BY chat_id 
+ORDER BY message_id;
+
+//info de chats seleccionados ordenados por ultimo message
+SELECT c.chat_id, user1_id, user2_id, max(m.message_id) as message_id
+FROM chats as c
+JOIN messages as m
+ON c.chat_id=m.chat_id
+WHERE user1_id=1 OR user2_id=1
+GROUP BY c.chat_id
+ORDER BY message_id desc;
+
+//info de chats seleccionados ordenados por ultimo message mas cant. msj sin ver
+SELECT c.chat_id, user1_id, user2_id, max(m.message_id) as message_id,
+(SELECT count(seen)
+FROM messages
+WHERE seen=0 and chat_id=c.chat_id and user<>1
+) as seen
+FROM chats as c
+JOIN messages as m
+ON c.chat_id=m.chat_id
+WHERE user1_id=1 OR user2_id=1
+GROUP BY c.chat_id
+ORDER BY message_id desc;
+
+
+//ver mensajes sin ver todos chats
+SELECT chat_id, count(seen)
+FROM messages
+WHERE seen=0;
+
+//agregar columna a tabla messages
+ALTER TABLE messages
+ADD column seen
+bool
+default 0 
+NOT NULL
+
+//cambiar seen=0 por seen=1
+UPDATE messages
+SET seen=1
+WHERE message_id=180

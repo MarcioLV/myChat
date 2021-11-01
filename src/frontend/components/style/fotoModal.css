@@ -1,0 +1,125 @@
+button {
+  border: none;
+  border-radius: 5px;
+}
+
+.fotoModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Helvetica, Arial, sans-serif;
+}
+.fotoModal-conteiner {
+  width: 350px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+.fotoModal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid gray;
+}
+
+.closeButton {
+  background-color: inherit;
+  align-self: flex-start;
+  position: relative;
+  bottom: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+.closeButton img {
+  width: 25px;
+}
+
+.fotoModal-user-imagen {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.fotoModal-user-imagen-avatar {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(101, 129, 153);
+  overflow: hidden;
+}
+
+.fotoModal-section-input {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fotoModal-section-input h4 {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.fotoModal-section-input_cargar,
+.fotoModal-section-input_eliminar {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.filebutton{
+  padding: 10px;
+  font-size: 18px;
+  width: fit-content;
+  margin: 0 auto;
+  background: lightblue;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.filebutton label{
+  cursor: pointer;
+}
+
+.filebutton-locked{
+  background-color: rgb(190, 187, 187);
+}
+
+.fotoModal-button {
+  /* margin: 0 auto; */
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fotoModal-button button {
+  width: 100px;
+  height: 35px;
+  font-size: 1.2em;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.fotoModal-button_cancelar {
+  background-color: rgb(226, 56, 56);
+}
+
+.fotoModal-button_aceptar {
+  background-color: rgb(44, 160, 44);
+}

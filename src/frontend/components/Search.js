@@ -1,38 +1,48 @@
 import React, { useState, useEffect, useContext } from "react";
 
-const API_URL = "http://localhost:3000/api/";
+// import config from '../../../config'
+import config from '../../../config'
+const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
+// const API_URL = `http://localhost:3000/api/`;
 
-import {AppContext} from '../context/AppProvider'
-import './style/Search.css'
+import { AppContext } from "../context/AppProvider";
+import searchIcon from "../assets/icons/search-icon.png";
+import cerrarIcon from "../assets/icons/cerrar-icon.png";
+import "./style/Search.css";
 
 const Search = (props) => {
-  const {state, addSearch, deleteSearch} = useContext(AppContext)
-  const {search} = state
+  const { state, addSearch, deleteSearch } = useContext(AppContext);
+  const { search, user } = state;
   const [searchInp, setSearchInp] = useState("");
 
-  const handleSearchInp = () => {
-    props.handleSearchInp(searchInp)
-  }
+  useEffect(() => {
+    handleSearchInp();
+  }, [searchInp]);
 
-  useEffect(()=> {
-    handleSearchInp()
-  },[searchInp])
+  const handleSearchInp = () => {
+    props.handleSearchInp(searchInp);
+  };
 
   const handleDeleteSearch = () => {
     deleteSearch();
-    setSearchInp('')
-
+    setSearchInp("");
   };
-  const handleSearch = async () => {
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
     if (!searchInp) {
-      return alert("Search Vacio");
+      return;
     }
     const response = await fetchSearch(searchInp);
     if (response.error) {
       console.error(response.body);
       return alert("Sucedio un error");
     }
-    addSearch(response.body)
+    const index = response.body.findIndex((e) => e.user_id === user._id);
+    if (index !== -1) {
+      response.body.splice(index, 1);
+    }
+    addSearch(response.body);
   };
 
   const fetchSearch = async (data) => {
@@ -50,21 +60,43 @@ const Search = (props) => {
   };
 
   return (
-    <>
-      <div className="search-container">
-        <div className="search-input">
+    <div className="search-container">
+      <div className="Main_container">
+        <form className="search-input">
+          <button
+            type="submit"
+            onClick={(e) => handleSearch(e)}
+            className="search-input_search"
+          >
+            <img src={searchIcon} alt="search-Icon" />
+          </button>
           <input
             type="text"
             placeholder="Buscar"
             value={searchInp}
             onChange={(e) => setSearchInp(e.target.value)}
           />
-          <button onClick={handleSearch}>Buscar</button>
-          {searchInp !== '' && <button onClick={handleDeleteSearch}>Volver</button>
-}
-        </div>
+          <button
+            type="button"
+            onClick={handleDeleteSearch}
+            className="search-input_delete"
+            style={searchInp !== "" ? { visibility: "visible" } : {}}
+          >
+            <img src={cerrarIcon} alt="cerrar-Icon" />
+          </button>
+        </form>
+        {searchInp !== "" && (
+          <div
+            className="searchMore"
+            // style={{padding: "10px 0"}}
+            // key={chat.user_id + 10000}
+            onClick={(e) => handleSearch(e)}
+          >
+            Buscar mas
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };
 

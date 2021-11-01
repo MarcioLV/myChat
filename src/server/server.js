@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 
+require('dotenv').config()
+
 const socket = require("./socket");
 const {addUser, leftUser, sendMessage} = require("./socket")
 
@@ -28,36 +30,30 @@ router(app);
 socket.connect(server);
 const {io} = socket.socket
 
-
-
 io.on("connection", (socket) => {
-  console.log("c: " + socket.id);
-  socket.on("connection", (socket) => {
-    console.log("new user connected: ", socket);
-  });
   socket.on("login", (user) => {
     addUser(user, socket.id)
-    // console.log(socket.id);
   });
   socket.on("disconnect", () => {
     leftUser(socket.id)
-    console.log("user disconnected");
   });
 });
 
 app.use(errors);
 
-// app.use('/', express.static(path.join(__dirname, "../frontend/dist")))
-// app.use('/', express.static(path.join(__dirname, "../../dist")))
+app.use('/', express.static(path.join(__dirname, "./public")))
+app.use('/', express.static(path.join(__dirname, "../../dist")))
 
-// app.get("*/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"))
-// })
+app.get("*/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../dist/index.html"))
+})
+
 
 server.listen(config.api.port, (err) => {
   if (err) {
     console.error("Error", err);
   } else {
     console.log("Servidor escuchando en el puerto " + config.api.port);
+    console.log(path.join(__dirname, "../../dist/index.html"));
   }
 });

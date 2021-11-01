@@ -1,5 +1,8 @@
+import config from '../../../config'
+
 import {io} from 'socket.io-client'
 
-let socket = io("//localhost:3000")
+
+let socket = io(`${config.api.host}:${config.api.port}`)
 
 export default socket

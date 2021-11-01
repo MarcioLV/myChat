@@ -1,0 +1,32 @@
+.loading{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preloader{
+  width: 70px;
+  height: 70px;
+  /* border: 10px solid red; */
+  border: 10px solid rgb(36, 36, 36);
+  border-radius: 50%;
+  border-top: 10px solid rgb(184, 182, 182);
+  border-bottom: 10px solid rgb(184, 182, 182);
+
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count:  infinite;
+  
+}
+
+@keyframes girar {
+  from {
+    transform: rotate(0deg)
+  }
+  to{
+    transform: rotate(360deg)
+  }
+}
+

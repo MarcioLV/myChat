@@ -1,41 +1,37 @@
-const express = require("express")
+const express = require("express");
+// const socket = require("../../socket");
 
-const response = require("../../network/response")
-const controller = require("./controller")
 
-const router = express.Router()
+const response = require("../../network/response");
+const controller = require("./controller");
 
-router.get("/", (req, res) => {
+const router = express.Router();
+
+router.get("/", (req, res, next) => {
   controller
     .list()
     .then((data) => {
-      response.success(req, res, data, 200)
+      response.success(req, res, data, 200);
     })
-    .catch((err) => {
-      response.error(req, res, "Internal error", 500, err)
-    })
-})
+    .catch(next)
+});
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
   controller
     .listChat(req.params.id)
     .then((data) => {
-      response.success(req, res, data, 200)
+      response.success(req, res, data, 200);
     })
-    .catch(err => {
-      response.error(req, res, "Internal error", 500, err)
-    })
-})
+    .catch(next)
+});
 
-router.post("/", (req, res)=> {
+router.post("/", (req, res, next) => {
   controller
     .addChat(req.body)
     .then((data) => {
-      response.success(req, res, data, 201)
+      response.success(req, res, data, 201);
     })
-    .catch((err) => {
-      response.error(req, res, "Internal error", 500, err)
-    })
-})
+    .catch(next)
+});
 
-module.exports = router
+module.exports = router;

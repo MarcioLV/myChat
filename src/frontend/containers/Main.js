@@ -1,20 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-// import config from '../../../config'
+import config from '../../../config'
 
+import MainUser from "../components/MainUser";
 import Chats from "../components/Chats";
 import Messages from "../components/Messages";
 import InputMsj from "../components/InputMsj";
 import Search from "../components/Search";
 import UserChat from "../components/UserChat";
+import Loading from "../components/Loading";
+import Error from "../components/Error";
 import socket from "../socket/socket";
 
 import "./style/Main.css";
 
 import { AppContext } from "../context/AppProvider";
 
-// const API_URL = `${config.api.host}:${config.api.port}/${config.api.port}`
-const API_URL = "http://localhost:3000/api/";
+const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
+
+
 
 const Main = () => {
   const { state, setChats, setChat, addChatIncome, addMessage, addNewMessage } =
@@ -24,9 +28,15 @@ const Main = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [searchInp, setSearchInp] = useState('')
+  const [searchInp, setSearchInp] = useState("");
+
+  const [seeStyle, setSeeStyle] = useState();
+  const [msgToChat, setMsgToChat] = useState(false);
+  const [searchChat, setSearchChat] = useState();
+
   let history = useHistory();
 
+  let celWidth = 600;
   console.log("state: ", state);
 
   useEffect(() => {
@@ -50,18 +60,16 @@ const Main = () => {
   }, [state]);
 
   const handleAddMessageSocket = async (state, msg) => {
-    const {chats, chat} = state
+    const { chats, chat } = state;
     const chatExist = chats.some((e) => e.chat_id === msg.chat_id);
     if (chatExist) {
       if (chat.chat.chat_id === msg.chat_id) {
-        addMessage(msg);
+        handleChangeSeen(msg.message_id);
+        addMessage({...msg, seen: 0});
       } else {
-        const inc = newMessages.indexOf(msg.chat_id);
-        if (inc === -1) {
-          addNewMessage(msg.chat_id);
-        }
+        addNewMessage(msg.chat_id);
       }
-    }else {
+    } else {
       const newChat = {
         chat_id: msg.chat_id,
         user_id: msg.user,
@@ -71,21 +79,31 @@ const Main = () => {
     }
   };
 
-  const handleSearchInp = (value) => {
-    setSearchInp(value)
-  }
-  
-  const handleFetchMessages = async (chat) => {
-    const data = await fetchMessagesData(chat.chat_id);
-    if (data.error) {
-      console.error("error en fetch");
-      setError(true);
-    } else {
-      setChat({ chat: chat, messages: data.body });
+  const handleChangeSeen = async (msj_id) => {
+    try {
+      const response = await fetch(`${API_URL}message/` + msj_id, {
+        method: "PUT",
+        mode: "cors",
+      });
+
+      // let data = await response.json();
+    } catch (err) {
+      console.error(err);
     }
-    setLoading(false);
   };
-  
+
+  const handleSearchInp = (value) => {
+    setSearchInp(value);
+  };
+
+  const handleFetchMessages = async (chat) => {
+    if(chat){
+      setSearchChat(chat);
+    }else{
+      setSeeStyle("onlyMsg")
+    }
+  };
+
   const fetchChats = async () => {
     const data = await fetchChatsData();
     if (data.error) {
@@ -100,7 +118,6 @@ const Main = () => {
   const fetchChatsData = async () => {
     try {
       const response = await fetch(`${API_URL}chat/` + user._id, {
-        method: "GET",
         mode: "cors",
       });
 
@@ -118,43 +135,41 @@ const Main = () => {
     }
   };
 
-  const fetchMessagesData = async (chat) => {
-    try {
-      const response = await fetch(`${API_URL}message/` + chat, {
-        method: "GET",
-        mode: "cors",
-      });
-      let data = await response.json();
-      return data;
-    } catch (err) {
-      console.error(err);
-      setError(true);
-      setLoading(false);
+  const goBackToChats = () => {
+    setSearchChat("");
+    if (window.innerWidth <= celWidth) {
+      setSeeStyle("");
     }
   };
 
   if (error) {
-    return <div>Error</div>;
+    return <Error />;
   }
   if (loading) {
-    return <div>Loading</div>;
+    return <Loading />;
   }
   return (
-    <div className="main">
+    <div className={`main ${seeStyle}`}>
+      <div className="chatList-mainUser">
+        <MainUser />
+      </div>
       <div className="chatList-search">
-        <Search handleSearchInp={handleSearchInp}/>
+        <Search handleSearchInp={handleSearchInp} />
       </div>
       <div className="chatList-chats">
-        <Chats handleFetchMessages={handleFetchMessages} searchInp={searchInp}/>
+        <Chats
+          handleFetchMessages={handleFetchMessages}
+          searchInp={searchInp}
+        />
       </div>
       <div className="chatUser-username">
-        <UserChat />
+        <UserChat goBackToChats={() => goBackToChats()} />
       </div>
-      <div 
-        className="chatUser-messages"
-        style={chat.chat.chat_id && {background: "#e5ddd5"}}
-      >
-        <Messages />
+      <div className="chatUser-messages">
+        <Messages
+          searchChat={searchChat}
+          setSeeStyle={() => setSeeStyle("onlyMsg")}
+        />
       </div>
       <div className="chatUser-input">
         <InputMsj />

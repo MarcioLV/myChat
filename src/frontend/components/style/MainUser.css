@@ -1,0 +1,38 @@
+
+.mainUser{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainUser_container{
+  display: flex;
+  align-items: center;
+}
+
+.mainUser_container button{
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.mainUser-figure{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgb(132, 211, 132);
+}
+
+
+.imgAvatar{
+  width: 40px;
+}
+
+.notImgAvatar{
+  width: 30px;
+}

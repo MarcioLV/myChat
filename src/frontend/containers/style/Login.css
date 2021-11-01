@@ -1,0 +1,91 @@
+body{
+  background: rgb(233, 232, 232);
+}
+
+.login {
+  height: 100vh;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.login-box,
+.register-box {
+  width: 250px;
+}
+
+.login-box form,
+.register-box form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.login-box input,
+.login-box form button,
+.register-box input,
+.register-box form button {
+  height: 45px;
+}
+
+.login-box input,
+.register-box input {
+  border-radius: 5px;
+  padding-left: 15px;
+  font-size: large;
+  outline: none;
+  border: 1px solid grey
+}
+.login-box small,
+.register-box small{
+  align-self: center;
+  color: red;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  visibility: hidden;
+}
+
+.login-box form button,
+.register-box form button {
+  border: none;
+  font-size: 18px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.login-box form button {
+  background-color: #3386f2;
+}
+.register-box form button{
+  background-color: rgb(44, 160, 44);
+}
+
+.login-box_register,
+.register-box_login {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box_register button,
+.register-box_login button {
+  margin-left: 5px;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-box_register button {
+  background-color: rgb(44, 160, 44);
+}
+.register-box_login button {
+  background-color: #3386f2;
+}
