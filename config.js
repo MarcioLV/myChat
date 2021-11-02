@@ -1,8 +1,8 @@
 module.exports = {
   api: {
-    host: process.env.HOST || "http://192.168.0.28",
-    port: process.env.PORT || "3000",
-    name: process.env.NAME || "api"
+    host: process.env.HOST,
+    port: process.env.PORT,
+    name: process.env.NAME
   },
 
   mysql: {
