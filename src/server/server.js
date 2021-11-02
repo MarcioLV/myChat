@@ -13,7 +13,7 @@ const config = require("../../config");
 const errors = require("./network/error");
 const router = require("./network/routes");
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 // const socket = require('./socket')
 // const {Server} = require("socket.io")
 // const io = new Server(server,{
