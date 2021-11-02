@@ -1,6 +1,6 @@
 module.exports = {
   api: {
-    host: process.env.HOST || "http://localhost",
+    host: process.env.HOST || "https://mychatjs.herokuapp.com/",
     port: process.env.PORT,
     name: process.env.NAME || "api"
   },
