@@ -28,9 +28,6 @@ const Messages = ({ searchChat, setSeeStyle }) => {
   const messRef = useRef(null);
   const dateRef = useRef(null);
 
-  let load = 0
-  
-
   useEffect(async () => {
     if (searchChat) {
       setSeeStyle();
@@ -43,7 +40,6 @@ const Messages = ({ searchChat, setSeeStyle }) => {
         setError(true);
       } else {
         setChat({ chat: searchChat, messages: data.body });
-        
       }
       setLoading(false);
     }
@@ -104,7 +100,6 @@ const Messages = ({ searchChat, setSeeStyle }) => {
       mainContainerRef.current.scrollHeight + "px";
 
     if (onload) {
-      console.log(load);
       if (!onScroll && !scrollBottom) {
         messRef.current.scrollIntoView(true);
       } else if (scrollBottom) {
@@ -209,7 +204,6 @@ const Messages = ({ searchChat, setSeeStyle }) => {
         {chat.messages.map((msj, index) => {
           let date;
           let time = handleTime(msj);
-          msj.file && load++
           if (storeDate !== time[2] + time[1] || index === 0) {
             storeDate = time[2] + time[1];
             date = `${time[2]}-${time[1]}`;

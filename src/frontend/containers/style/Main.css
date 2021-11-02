@@ -30,7 +30,7 @@
   grid-template-columns: 30% 1fr;
   grid-template-rows: 50px fit-content(50px) 1fr fit-content(100px);
 
-  height: 100vh;
+  height: inherit;
   width: 100%;
 }
 
@@ -72,10 +72,10 @@
   grid-row: 4;
   background: #f0f0f0;
   height: fit-content;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* padding: 10px 0; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 @media (max-width: 600px) {

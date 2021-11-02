@@ -1,6 +1,8 @@
 .input{
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  /* max-height: 90vh; */
+  /* max-height: calc(var(--vh, 1vh)*100); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,6 +10,12 @@
   /* background: #f0f0f0; */
 }
 
+.input-text{
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
 
 .input-container{
   width: 90%;
@@ -89,19 +97,19 @@
 
 .input-image{
   width: 100%;
-  overflow-y: scroll;
-  
+  overflow-y: hidden;
+
+  position: relative;
+  top:0;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid yellow; */
 
 }
 
 .input-image_figure{
-  /* border: 1px solid red; */
-  margin-bottom: 10px;
+  margin-top: 5px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -109,22 +117,31 @@
 }
 
 .input-image_figure img{
-  max-width: 250px;
-  max-height: 70vh;
+  max-width: 90%;
+  max-height: calc(var(--vh, 1vh)*70);
+  /* height: inherit; */
+  /* max-height: 70%; */
 }
 
 .input-image_close{
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  /* border: 1px solid green */
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
 }
 .input-image_close_button{
-  /* width: 25px; */
   cursor: pointer;
-  position: absolute;
-  right: 18px;
+  
 }
 .input-image_close_button img{
   width: 20px;
+}
+
+@media (max-width: 600px) {
+.input-image_figure img{
+  max-width: 90%;
+  max-height: calc(var(--vh, 1vh)*50);
+  /* height: inherit; */
+  /* max-height: 70%; */
+}
 }

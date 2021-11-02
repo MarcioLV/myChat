@@ -10,7 +10,7 @@ import backIcon from "../assets/icons/back-icon.png";
 
 
 const Username = ({ goBackToChats }) => {
-  const { state, deleteChatMessages } = useContext(AppContext);
+  const { state } = useContext(AppContext);
   const { chat } = state;
 
   const [isOpened, setIsOpened] = useState(false);
@@ -20,7 +20,6 @@ const Username = ({ goBackToChats }) => {
   };
 
   const handleChangeView = () => {
-    deleteChatMessages();
     goBackToChats();
   };
 

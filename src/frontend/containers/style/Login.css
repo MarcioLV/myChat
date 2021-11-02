@@ -3,7 +3,7 @@ body{
 }
 
 .login {
-  height: 100vh;
+  height: inherit;
   min-height: 300px;
   display: flex;
   flex-direction: column;

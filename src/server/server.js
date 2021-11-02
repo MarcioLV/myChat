@@ -21,6 +21,11 @@ const router = require("./network/routes");
 //   }
 // })
 
+// MYSQL_HOST=127.0.0.1
+// MYSQL_USER=root
+// MYSQL_PASS=toor
+// MYSQL_DB=chat
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

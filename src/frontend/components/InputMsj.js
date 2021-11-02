@@ -6,23 +6,23 @@ import "./style/InputMsj.css";
 import sendIcon from "../assets/icons/send-icon.png";
 import loadPic from "../assets/icons/picture1.png";
 import closeIcon from "../assets/icons/cerrar-icon.png";
-import config from '../../../config'
-const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
+import config from "../../../config";
+const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`;
 // const API_URL = `http://localhost:3000/api/`;
 
-const InputMsj = () => {
+const InputMsj = ({searchChat}) => {
   const { state, addChatOutcome, addMessage } = useContext(AppContext);
   const { user, chat } = state;
   const [msj, setMsj] = useState("");
   const [height, setHeight] = useState();
 
   //uso en el frontend
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   //lo que mando
-  const [imagen, setImagen] = useState();
+  const [imagen, setImagen] = useState(null);
 
   const textRef = useRef();
-  const imgInput = useRef(null)
+  const imgInput = useRef(null);
 
   useEffect(() => {
     if (textRef.current) {
@@ -31,12 +31,26 @@ const InputMsj = () => {
     }
   }, [textRef.current]);
 
+  useEffect(async () => {
+    if (searchChat) {
+      resetView()
+    }
+  }, [searchChat]);
+
   useEffect(() => {
     if (height) {
       textRef.current.style.height = height + "px";
       textRef.current.style.height = textRef.current.scrollHeight + "px";
     }
   }, [msj]);
+
+  const resetView = () => {
+    if(imgInput.current){
+      imgInput.current.value = "";
+    }
+    setImagen(null);
+    setFile(null);
+  }
 
   const handleAddImage = (e) => {
     console.log(e);
@@ -131,9 +145,7 @@ const InputMsj = () => {
       addMessage(message);
     }
     setMsj("");
-    setImagen(null);
-    setFile(null);
-    imgInput.current.value = ''
+    resetView()
   };
 
   const handleAddNewChat = async (data) => {
@@ -189,59 +201,63 @@ const InputMsj = () => {
   };
 
   const closeImage = () => {
-    setImagen(null);
-    setFile(null);
-  }
+    resetView()
+  };
 
   if (!chat.chat.user_id) {
     return <></>;
   }
-  //imagen para post
-  let picture = "";
-  let imgStyle = { display: "none" };
-  if (file) {
-    picture = file.src;
-    imgStyle.display = "flex";
-  }
+  // //imagen para post
+  // let picture = "";
+  // // let imgStyle = { display: "none" };
+  // if (file) {
+  //   picture = file.src;
+  //   // imgStyle.display = "flex";
+  // }
   return (
     <div className="input">
-      <div className="input-image" style={{ display: imgStyle.display }}>
-        <div className="input-image_close">
-          <button className="input-image_close_button" onClick={closeImage}>
-            <img src={closeIcon} alt="" />
+      {file && (
+        <div className="input-image" /*style={{ display: imgStyle.display }}*/>
+          <figure className="input-image_figure">
+            <img src={file.src} /*style={imgStyle}*/ />
+          </figure>
+          <div className="input-image_close">
+            <button className="input-image_close_button" onClick={closeImage}>
+              <img src={closeIcon} alt="" />
+            </button>
+          </div>
+        </div>
+      )}
+      <div className="input-text">
+        <div className="input-container">
+          <textarea
+            value={msj}
+            onChange={(e) => {
+              e.target.value.slice(-1) !== "\n" && setMsj(e.target.value);
+              // setMsj(e.target.value)
+            }}
+            onKeyPress={(e) => {
+              handleSubmit(e);
+            }}
+            placeholder="Escribe un mensaje"
+            ref={textRef}
+          />
+          <div className="input-imagenLoad">
+            <label htmlFor="img-file">
+              <img src={loadPic} />
+            </label>
+            <input
+              ref={imgInput}
+              type="file"
+              id="img-file"
+              accept="image/*"
+              onChange={(e) => handleAddImage(e)}
+            />
+          </div>
+          <button onClick={handleAddMessage}>
+            <img className="sendButton" src={sendIcon} alt="" />
           </button>
         </div>
-        <figure className="input-image_figure">
-          <img src={picture} style={imgStyle} />
-        </figure>
-      </div>
-      <div className="input-container">
-        <textarea
-          value={msj}
-          onChange={(e) => {
-            e.target.value.slice(-1) !== "\n" && setMsj(e.target.value);
-          }}
-          onKeyPress={(e) => {
-            handleSubmit(e);
-          }}
-          placeholder="Escribe un mensaje"
-          ref={textRef}
-        />
-        <div className="input-imagenLoad">
-          <label htmlFor="img-file">
-            <img src={loadPic} />
-          </label>
-          <input
-            ref={imgInput}
-            type="file"
-            id="img-file"
-            accept="image/*"
-            onChange={(e) => handleAddImage(e)}
-          />
-        </div>
-        <button onClick={handleAddMessage}>
-          <img className="sendButton" src={sendIcon} alt="" />
-        </button>
       </div>
     </div>
   );

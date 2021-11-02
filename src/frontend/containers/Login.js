@@ -13,7 +13,7 @@ const Login = () => {
   const { state, setUser } = useContext(AppContext);
   const { user } = state;
   const [incorrect, setIncorrect] = useState(false);
-  const [loginName, setLoginName] = useState("Maximiliano");
+  const [loginName, setLoginName] = useState("");
   const [register, setRegister] = useState(false);
 
   let history = useHistory();

@@ -21,7 +21,7 @@ const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
 
 
 const Main = () => {
-  const { state, setChats, setChat, addChatIncome, addMessage, addNewMessage } =
+  const { state, setChats, addChatIncome, addMessage, addNewMessage, deleteChatMessages } =
     useContext(AppContext);
 
   const { user, chats, chat, newMessages } = state;
@@ -45,6 +45,9 @@ const Main = () => {
     }
     socket.emit("login", user._id);
     fetchChats();
+    return ()=>{
+      goBackToChats()
+    }
   }, []);
 
   useEffect(() => {
@@ -136,6 +139,7 @@ const Main = () => {
   };
 
   const goBackToChats = () => {
+    deleteChatMessages();
     setSearchChat("");
     if (window.innerWidth <= celWidth) {
       setSeeStyle("");
@@ -169,10 +173,11 @@ const Main = () => {
         <Messages
           searchChat={searchChat}
           setSeeStyle={() => setSeeStyle("onlyMsg")}
+          goBackToChats={()=>goBackToChats}
         />
       </div>
       <div className="chatUser-input">
-        <InputMsj />
+        <InputMsj searchChat={searchChat}/>
       </div>
     </div>
   );
