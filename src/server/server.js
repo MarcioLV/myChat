@@ -58,7 +58,7 @@ server.listen(/*config.api.port*/ port, (err) => {
   if (err) {
     console.error("Error", err);
   } else {
-    console.log("Servidor escuchando en el puerto " + config.api.port);
+    console.log("Servidor escuchando en el puerto " + port);
     console.log(path.join(__dirname, "../../dist/index.html"));
   }
 });
