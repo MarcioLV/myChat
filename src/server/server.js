@@ -13,6 +13,7 @@ const config = require("../../config");
 const errors = require("./network/error");
 const router = require("./network/routes");
 
+const port = process.env.PORT
 // const socket = require('./socket')
 // const {Server} = require("socket.io")
 // const io = new Server(server,{
@@ -53,7 +54,7 @@ app.get("*/", (req, res) => {
   res.sendFile(path.join(__dirname, "../../dist/index.html"))
 })
 
-server.listen(config.api.port, (err) => {
+server.listen(/*config.api.port*/ port, (err) => {
   if (err) {
     console.error("Error", err);
   } else {
