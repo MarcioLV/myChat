@@ -37,7 +37,7 @@ const Chats = (props) => {
     } else {
       handleFetchMessages()
       setChat({
-        chat: { chat_id: null, user_id: newChat.user_id, name: newChat.name },
+        chat: { chat_id: null, user_id: newChat.user_id, name: newChat.name, avatar: newChat.avatar},
         messages: [],
       });
     }

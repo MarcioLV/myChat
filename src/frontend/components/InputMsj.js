@@ -117,6 +117,7 @@ const InputMsj = ({searchChat}) => {
         chat_id: chatId,
         user_id: chat.chat.user_id,
         name: chat.chat.name,
+        avatar: chat.chat.avatar
       };
     }
     //Add the message to the new chat
