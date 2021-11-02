@@ -7,7 +7,7 @@ import sendIcon from "../assets/icons/send-icon.png";
 import loadPic from "../assets/icons/picture1.png";
 import closeIcon from "../assets/icons/cerrar-icon.png";
 import config from "../../../config";
-const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`;
+const API_URL = `${config.api.host}/${config.api.name}/`;
 // const API_URL = `http://localhost:3000/api/`;
 
 const InputMsj = ({searchChat}) => {

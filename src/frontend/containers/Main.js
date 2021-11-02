@@ -16,7 +16,7 @@ import "./style/Main.css";
 
 import { AppContext } from "../context/AppProvider";
 
-const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
+const API_URL = `${config.api.host}/${config.api.name}/`
 
 
 

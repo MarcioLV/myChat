@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppProvider";
 import "./style/Login.css";
 
 import config from '../../../config'
-const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
+const API_URL = `${config.api.host}/${config.api.name}/`
 
 // const API_URL = `http://localhost:3000/api/`;
 

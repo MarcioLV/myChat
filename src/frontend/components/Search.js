@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 // import config from '../../../config'
 import config from '../../../config'
-const API_URL = `${config.api.host}:${config.api.port}/${config.api.name}/`
+const API_URL = `${config.api.host}/${config.api.name}/`
 // const API_URL = `http://localhost:3000/api/`;
 
 import { AppContext } from "../context/AppProvider";
