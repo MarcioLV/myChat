@@ -65,7 +65,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new Dotenv({
-      path: '.env',
+      path: './.env',
       safe: true
     })
   ],
