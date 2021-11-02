@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import closeIcon from "../assets/icons/CloseWhite-icon.png";
+// import closeIcon from "../assets/icons/CloseWhite-icon.png";
 
 import "./style/viewImage.css";
 
@@ -21,7 +21,7 @@ function ViewImage(props) {
           <img src={props.image} alt="picture" />
         </div>
         <button className="viewImage-button" onClick={closeModal}>
-          <img src={closeIcon} alt="" />
+          {/* <img src={closeIcon} alt="" /> */}
         </button>
       </div>
     </div>,
