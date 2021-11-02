@@ -1,15 +1,15 @@
 module.exports = {
   api: {
-    host: process.env.HOST || "https://mychatjs.herokuapp.com/",
+    host: process.env.HOST,
     port: process.env.PORT,
-    name: process.env.NAME || "api"
+    name: process.env.NAME
   },
 
   mysql: {
-    host: process.env.MYSQL_HOST || "remotemysql.com",
-    user: process.env.MYSQL_USER || "oGZSQM4dBE",
-    password: process.env.MYSQL_PASS || "0m6TQoEFzG",
-    database: process.env.MYSQL_DB || "oGZSQM4dBE",
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASS,
+    database: process.env.MYSQL_DB,
   },
 };
 

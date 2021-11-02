@@ -64,12 +64,10 @@ module.exports = {
       filename: "assets/[name].[contenthash].css",
     }),
     new CleanWebpackPlugin(),
-    new Dotenv()
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-
-    //   }
-    // })
+    new Dotenv({
+      path: './.env',
+      safe: true
+    })
   ],
   optimization: {
     minimize: true,
