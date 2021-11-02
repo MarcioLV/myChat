@@ -30,7 +30,7 @@ async function addUser(name){
 async function addAvatar(user, avatar){
   let fileUrl = ''
   if(avatar){
-    fileUrl = `${config.api.host}:${config.api.port}/files/avatars/${avatar.filename}`;
+    fileUrl = `${config.api.host}/files/avatars/${avatar.filename}`;
   }
   const data = store.addAvatar(TABLA, user, fileUrl);
   return {...data, file: fileUrl}
