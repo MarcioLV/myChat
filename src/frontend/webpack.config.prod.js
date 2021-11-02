@@ -64,6 +64,7 @@ module.exports = {
       filename: "assets/[name].[contenthash].css",
     }),
     new CleanWebpackPlugin(),
+    new Dotenv()
     // new webpack.DefinePlugin({
     //   'process.env': {
 
