@@ -37,7 +37,7 @@ async function addMessage(chat, user, message, picture){
   }
 
   if(picture){
-    mensaje.file = `${config.api.host}:${config.api.port}/files/pictures/${picture.filename}`;
+    mensaje.file = `${config.api.host}/files/pictures/${picture.filename}`;
   }
 
   const data = await store.addMessage(TABLA, mensaje)
