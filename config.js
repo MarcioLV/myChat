@@ -2,7 +2,7 @@ module.exports = {
   api: {
     host: process.env.HOST,
     port: process.env.PORT,
-    name: process.env.NAME
+    name: process.env.NAME || "api"
   },
 
   mysql: {
