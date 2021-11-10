@@ -8,7 +8,7 @@ NodeJS/ExpressJS/ReactJS/MySQL
 - Cambiar foto de perfil
 
 
-## Prerequisitos
+## Prerrequisitos
 Base de datos MySQL  
 Tener instalado
 - Node JS
