@@ -56,16 +56,4 @@ router.post("/:user", upload.single("avatar"), (req,res, next) => {
     .catch(next)
 })
 
-// router.get("/:id", (req, res) => {
-//   const user = req.query.name || null
-//   controller
-//     .getUser(user)
-//     .then((userList) => {
-//       response.success(req, res, userList, 200)
-//     })
-//     .catch((err) => {
-//       response.error(req, res, "Unexpected Error", 500, err)
-//     })
-//   })
-
 module.exports = router

@@ -1,7 +1,6 @@
 const mysql = require("mysql");
 const fs = require("fs").promises;
 const config = require("../../../config");
-// const { sendMessage } = require("../socket");
 
 const dbconf = {
   host: config.mysql.host,

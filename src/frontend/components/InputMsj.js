@@ -8,7 +8,6 @@ import loadPic from "../assets/icons/picture1.png";
 import closeIcon from "../assets/icons/cerrar-icon.png";
 import config from "../config";
 const API_URL = `${config.api.host}/api/`;
-// const API_URL = `http://localhost:3000/api/`;
 
 const InputMsj = ({searchChat}) => {
   const { state, addChatOutcome, addMessage } = useContext(AppContext);
@@ -174,9 +173,6 @@ const InputMsj = ({searchChat}) => {
       let response = await fetch(`${API_URL}message`, {
         method: "POST",
         mode: "cors",
-        // headers: {
-        //   "Content-type": "application/json",
-        // },
         body: data,
       });
       response = await response.json();

@@ -44,7 +44,6 @@
 .chatList-search{
   grid-column: 1;
   grid-row: 2;
-  /* height: fit-content; */
 }
 
 .chatList-chats{
@@ -64,7 +63,6 @@
   grid-column: 2;
   grid-row: 2 / 4;
   background-color: #f8f9fa;
-  /* overflow-y: auto; */
 }
 
 .chatUser-input{
@@ -72,20 +70,11 @@
   grid-row: 4;
   background: #f0f0f0;
   height: fit-content;
-  /* padding: 10px 0; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 @media (max-width: 600px) {
   .main{
-    /* display: grid; */
     grid-template-columns: 100vw 0;
-    /* grid-template-rows: 50px fit-content(50px) 1fr fit-content(100px); */
-  
-    /* height: 80vh; */
-    /* width: 100vw; */
   }
   .onlyMsg{
     grid-template-columns: 0 100vw;

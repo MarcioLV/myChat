@@ -20,8 +20,6 @@ const Messages = ({ searchChat, setSeeStyle }) => {
   const [error, setError] = useState(false);
   const [onScroll, setOnScroll] = useState(false);
   const [scrollBottom, setScrollBottom] = useState(false);
-  // const [load, setLoad] = useState(0)
-  // const [view, setView] = useState("hidden")
 
   const mainRef = useRef(null);
   const mainContainerRef = useRef(null);
@@ -48,17 +46,6 @@ const Messages = ({ searchChat, setSeeStyle }) => {
   useEffect(() => {
     if (messRef.current) {
       handleHeightView();
-      // if (
-      //   !onScroll ||
-      //   chat.messages[chat.messages.length - 1].user === user._id
-      // ) {
-      //   console.log("effect");
-      //   if (scrollBottom) {
-      //     mainContainerRef.current.scrollIntoView(false);
-      //   } else {
-      //     messRef.current.scrollIntoView(true);
-      //   }
-      // }
     }
   }, [messRef.current, chat.messages.length, loading]);
 
@@ -69,25 +56,17 @@ const Messages = ({ searchChat, setSeeStyle }) => {
 
   const handleScroll = () => {
     if (mainContainerRef.current) {
-      console.log("scroll");
       const clientHeight = mainRef.current.clientHeight;
       const scrollHeight = mainRef.current.scrollHeight;
       const scrollTop = Math.ceil(mainRef.current.scrollTop);
       if (clientHeight + scrollTop >= scrollHeight) {
-        console.log("scrollBottom");
         setOnScroll(false);
         setScrollBottom(true);
       } else {
         setScrollBottom(false);
         setOnScroll(true);
       }
-      // console.log("ch",mainRef.current.clientHeight);
-      // console.log("sh",mainRef.current.scrollHeight);
-      // console.log("st",mainRef.current.scrollTop);
-      // console.log(clientHeight+scrollTop);
-      // console.log(mainRef)
     }
-    // console.log(e);
   };
 
   const moveScroll = () => {

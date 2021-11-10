@@ -155,7 +155,6 @@ function FotoModal(props) {
               type="checkbox"
               name="img"
               id="delete"
-              // value="eliminar"
               onChange={()=>setLocked(!locked)}
             />
             <label htmlFor="delete">

@@ -68,7 +68,6 @@ const useInitialState = () => {
   
   const addChatIncome = (payload) => {
     const msg = modifyNewMessage(payload.chat_id)
-    // const ordChat = modifyOrderChat({chat_id: payload.chat_id})
     setState({
       ...state,
       chats: [payload, ...state.chats],
@@ -116,7 +115,6 @@ const useInitialState = () => {
   }
 
   const addMessage = (payload) => {
-    console.log(payload);
     const ordChat = modifyOrderChat(payload)
     let messages = state.chat.messages
     if(payload.user === state.user._id){
@@ -124,7 +122,6 @@ const useInitialState = () => {
     }
     setState({
       ...state,
-      // chat: { ...state.chat, messages: [...state.chat.messages, payload] },
       chat: { ...state.chat, messages: [...messages, payload] },
       chats: ordChat
     });
@@ -140,13 +137,6 @@ const useInitialState = () => {
     });
   };
   
-  // const deleteNewMessage = payload => {
-  //   setState({
-  //     ...state,
-  //     newMessages: msg
-  //   })
-  // }
-
   const addSearch = (payload) => {
     setState({
       ...state,
@@ -173,7 +163,6 @@ const useInitialState = () => {
     addMessage,
     handleModifyMsj,
     addNewMessage,
-    // deleteNewMessage,
     addSearch,
     deleteSearch,
   };

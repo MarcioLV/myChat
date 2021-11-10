@@ -10,7 +10,6 @@ const Chats = (props) => {
   const { chats, search, newMessages } = state;
 
   const [filterChats, setFilterChats] = useState(chats);
-  // const [filterAct, setFilterAct] = useState(false);
 
   useEffect(() => {
     if (props.searchInp !== "") {
@@ -18,10 +17,8 @@ const Chats = (props) => {
         chat.name.toLowerCase().includes(props.searchInp.toLowerCase())
       );
       setFilterChats(filChat);
-      // setFilterAct(true);
     } else {
       setFilterChats(chats);
-      // setFilterAct(false);
       deleteSearch();
     }
   }, [props.searchInp, chats]);

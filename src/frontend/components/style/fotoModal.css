@@ -41,7 +41,6 @@ button {
   background-color: inherit;
   align-self: flex-start;
   position: relative;
-  /* width: 25px; */
   bottom: -1px;
   left: 4px;
   cursor: pointer;

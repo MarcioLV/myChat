@@ -20,10 +20,6 @@ const MainUser = () => {
     setIsOpenedImg(false);
   };
 
-  const hola = (e) => {
-    console.log("e: " + e);
-  }
-
   let userImg = user.avatar ? user.avatar : userPic;
 
   return (
@@ -35,7 +31,6 @@ const MainUser = () => {
               src={userImg}
               alt="mainUser-avatar"
               className={user.avatar ? "imgAvatar" : "notImgAvatar"}
-              onLoad={(e)=>hola(e)}
             />
           </figure>
         </button>

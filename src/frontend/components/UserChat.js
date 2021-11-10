@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-// import { useEffect } from 'react/cjs/react.development'
 
 import { AppContext } from "../context/AppProvider";
 import ViewImage from "./ViewImage";

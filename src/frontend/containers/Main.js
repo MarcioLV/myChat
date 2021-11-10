@@ -37,7 +37,6 @@ const Main = () => {
   let history = useHistory();
 
   let celWidth = 600;
-  console.log("state: ", state);
 
   useEffect(() => {
     if (!user._id) {
@@ -89,7 +88,6 @@ const Main = () => {
         mode: "cors",
       });
 
-      // let data = await response.json();
     } catch (err) {
       console.error(err);
     }
@@ -127,7 +125,6 @@ const Main = () => {
       let data = await response.json();
       return data;
     } catch (err) {
-      // console.error(err);
       const error = {
         error: true,
         body: err,

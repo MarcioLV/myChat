@@ -20,7 +20,6 @@ const Login = () => {
     if (user._id) {
       return history.push("/");
     }
-    // handleLogin()
   }, []);
 
   const erraseLogin = () => {

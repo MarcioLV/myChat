@@ -19,7 +19,6 @@ async function addUser(name){
   if(taken){
     return false
   }
-  // const user = {name: name}
   const add = await store.addUser(TABLA, name)
   return add
 }
@@ -32,12 +31,6 @@ async function addAvatar(user, avatar){
   const data = store.addAvatar(TABLA, user, fileUrl);
   return {...data, file: fileUrl}
 }
-
-// function getUser(filterName){
-//   return new Promise((res, rej) => {
-//     res(store.list(filterName))
-//   })
-// }
 
 module.exports = {
   list,

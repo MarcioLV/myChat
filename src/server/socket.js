@@ -11,7 +11,6 @@ function connect(server) {
 }
 
 function addUser(userId, socketId){
-  console.log(userId, socketId);
   socket.users = [...socket.users, {user_id: userId, socket_id: socketId}]
 }
 
