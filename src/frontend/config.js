@@ -1,6 +1,6 @@
 
 module.exports = {
   api:{
-    host: "https://mychatjs.herokuapp.com/",
+    host: "https://mychatjs.herokuapp.com",
   }
 }
