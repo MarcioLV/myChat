@@ -1,8 +1,8 @@
 const dotenv = require('dotenv').config()
 module.exports = {
   api: {
-    host: process.env.HOST || "http://localhost:3000",
-    name: process.env.NAME || "api"
+    host: process.env.API_URL || "http://localhost:3000",
+    name: "api"
   },
 
   mysql: {
