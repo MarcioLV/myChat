@@ -6,8 +6,8 @@ import "./style/InputMsj.css";
 import sendIcon from "../assets/icons/send-icon.png";
 import loadPic from "../assets/icons/picture1.png";
 import closeIcon from "../assets/icons/cerrar-icon.png";
-import config from "../../../config";
-const API_URL = `${config.api.host}/${config.api.name}/`;
+import config from "../config";
+const API_URL = `${config.api.host}/api/`;
 // const API_URL = `http://localhost:3000/api/`;
 
 const InputMsj = ({searchChat}) => {
@@ -53,7 +53,6 @@ const InputMsj = ({searchChat}) => {
   }
 
   const handleAddImage = (e) => {
-    console.log(e);
     if (e.target.files.length > 0) {
       let img = e.target.files[0];
       let reader = new FileReader();
@@ -208,13 +207,6 @@ const InputMsj = ({searchChat}) => {
   if (!chat.chat.user_id) {
     return <></>;
   }
-  // //imagen para post
-  // let picture = "";
-  // // let imgStyle = { display: "none" };
-  // if (file) {
-  //   picture = file.src;
-  //   // imgStyle.display = "flex";
-  // }
   return (
     <div className="input">
       {file && (

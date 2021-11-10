@@ -24,7 +24,6 @@ button {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
 }
 .fotoModal-header {
   display: flex;
@@ -34,16 +33,21 @@ button {
   border-bottom: 1px solid gray;
 }
 
+.fotoModal-header_titulo h1 {
+  text-align: center;
+}
+
 .closeButton {
   background-color: inherit;
   align-self: flex-start;
   position: relative;
-  bottom: 5px;
-  left: 5px;
+  /* width: 25px; */
+  bottom: -1px;
+  left: 4px;
   cursor: pointer;
 }
 .closeButton img {
-  width: 25px;
+  width: 20px;
 }
 
 .fotoModal-user-imagen {
@@ -70,7 +74,7 @@ button {
 }
 
 .fotoModal-section-input h4 {
-  font-size: 18px;
+  font-size: 16px;
   margin-left: 5px;
 }
 
@@ -83,7 +87,7 @@ button {
 
 .filebutton{
   padding: 10px;
-  font-size: 18px;
+  font-size: 16px;
   width: fit-content;
   margin: 0 auto;
   background: lightblue;
@@ -100,7 +104,6 @@ button {
 }
 
 .fotoModal-button {
-  /* margin: 0 auto; */
   margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
@@ -122,4 +125,18 @@ button {
 
 .fotoModal-button_aceptar {
   background-color: rgb(44, 160, 44);
+}
+
+
+@media (max-height: 470px) {
+  .fotoModal-conteiner{
+    height: 94vh;
+    height: calc(var(--vh, 1vh)*100);
+    border-radius: 0;
+    overflow: auto;
+  }
+  .closeButton{
+    display: none;
+  }
+  
 }

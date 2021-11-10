@@ -9,7 +9,7 @@ const Dotenv = require("dotenv-webpack")
 module.exports = {
   entry: "./src/frontend/index.js",
   output: {
-    path: path.resolve(__dirname, "../../dist"),
+    path: path.resolve(__dirname, "../server/public/dist"),
     filename: "[name].[contenthash].js",
     publicPath: "/"
   },
@@ -43,7 +43,7 @@ module.exports = {
           {
             loader: "file-loader",
             options: {
-              name: 'assets/icon/[name].[ext]',
+              name: 'assets/icons/[name].[ext]',
             },
           }
         ],
@@ -56,6 +56,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: "public/index.html",
       filename: "./index.html",
@@ -64,12 +65,8 @@ module.exports = {
       filename: "assets/[name].[contenthash].css",
     }),
     new CleanWebpackPlugin(),
-    new Dotenv()
-    // new Dotenv({
-    //   path: './.env',
-    //   safe: true,
-    // })
   ],
+  
   optimization: {
     minimize: true,
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],

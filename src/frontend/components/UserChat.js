@@ -8,7 +8,6 @@ import "./style/UserChat.css";
 import userPic from "../assets/icons/user.png";
 import backIcon from "../assets/icons/back-icon.png";
 
-
 const Username = ({ goBackToChats }) => {
   const { state } = useContext(AppContext);
   const { chat } = state;
@@ -27,6 +26,7 @@ const Username = ({ goBackToChats }) => {
     return <></>;
   }
   let userImg = chat.chat.avatar ? chat.chat.avatar : userPic;
+  
   return (
     <div className="username-container">
       <ViewImage onClose={closeViewImage} isOpened={isOpened} image={userImg} />

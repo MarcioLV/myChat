@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import config from '../../../config'
+import config from '../config'
 
 import MainUser from "../components/MainUser";
 import Chats from "../components/Chats";
@@ -16,7 +16,7 @@ import "./style/Main.css";
 
 import { AppContext } from "../context/AppProvider";
 
-const API_URL = `${config.api.host}/${config.api.name}/`
+const API_URL = `${config.api.host}/api/`
 
 
 
@@ -41,7 +41,7 @@ const Main = () => {
 
   useEffect(() => {
     if (!user._id) {
-      return history.push("/");
+      return history.push("/login");
     }
     socket.emit("login", user._id);
     fetchChats();

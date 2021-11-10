@@ -43,17 +43,16 @@ io.on("connection", (socket) => {
 app.use(errors);
 
 app.use('/', express.static(path.join(__dirname, "./public")))
-app.use('/', express.static(path.join(__dirname, "../../dist")))
+app.use('/', express.static(path.join(__dirname, "./public/dist")))
 
 app.get("*/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../dist/index.html"))
+  res.sendFile(path.join(__dirname, "./public/dist/index.html"))
 })
 
-server.listen(/*config.api.port*/ port, (err) => {
+server.listen(port, (err) => {
   if (err) {
     console.error("Error", err);
   } else {
     console.log("Servidor escuchando en el puerto " + port);
-    console.log(path.join(__dirname, "../../dist/index.html"));
   }
 });

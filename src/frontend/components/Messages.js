@@ -6,9 +6,9 @@ import Loading from "./Loading";
 import Error from "./Error";
 
 import "./style/Messages.css";
-import config from '../../../config'
-const API_URL = `${config.api.host}/${config.api.name}/`
-// const API_URL = `http://localhost:3000/api/`;
+
+import config from '../config'
+const API_URL = `${config.api.host}/api/`
 
 const Messages = ({ searchChat, setSeeStyle }) => {
   const { state, setChat } = useContext(AppContext);

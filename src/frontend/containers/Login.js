@@ -4,10 +4,8 @@ import { useHistory } from "react-router-dom";
 import { AppContext } from "../context/AppProvider";
 import "./style/Login.css";
 
-import config from '../../../config'
-const API_URL = `${config.api.host}/${config.api.name}/`
-
-// const API_URL = `http://localhost:3000/api/`;
+import config from '../config'
+const API_URL = `${config.api.host}/api/`
 
 const Login = () => {
   const { state, setUser } = useContext(AppContext);
@@ -20,7 +18,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user._id) {
-      return history.push("/home");
+      return history.push("/");
     }
     // handleLogin()
   }, []);
@@ -52,7 +50,7 @@ const Login = () => {
     }
     name.user_id = response.body.insertId;
     setUser(name);
-    history.push("/home");
+    history.push("/");
   };
 
   const fetchRegister = async (name) => {
@@ -89,7 +87,7 @@ const Login = () => {
       return setIncorrect(true);
     }
     setUser(response.body);
-    history.push("/home");
+    history.push("/");
   };
 
   const fetchUser = async (loginName) => {

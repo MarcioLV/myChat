@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
-// import config from '../../../config'
-import config from '../../../config'
-const API_URL = `${config.api.host}/${config.api.name}/`
-// const API_URL = `http://localhost:3000/api/`;
+import config from '../config'
+const API_URL = `${config.api.host}/api/`
 
 import { AppContext } from "../context/AppProvider";
 import searchIcon from "../assets/icons/search-icon.png";
@@ -88,8 +86,6 @@ const Search = (props) => {
         {searchInp !== "" && (
           <div
             className="searchMore"
-            // style={{padding: "10px 0"}}
-            // key={chat.user_id + 10000}
             onClick={(e) => handleSearch(e)}
           >
             Buscar mas

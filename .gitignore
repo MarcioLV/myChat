@@ -1,2 +1,7 @@
 node_modules
 .env
+src/server/public/dist
+!src/server/public/files/pictures/.gitkeep
+src/server/public/files/pictures/*
+!src/server/public/files/avatars/.gitkeep
+src/server/public/files/avatars/*

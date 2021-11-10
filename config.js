@@ -1,8 +1,7 @@
+const dotenv = require('dotenv').config()
 module.exports = {
   api: {
-    host: process.env.HOST || "https://mychatjs.herokuapp.com",
-    // host: process.env.HOST || "http://localhost:3000",
-    // port: process.env.PORT,
+    host: process.env.HOST || "http://localhost:3000",
     name: process.env.NAME || "api"
   },
 
@@ -13,10 +12,3 @@ module.exports = {
     database: process.env.MYSQL_DB, 
   },
 };
-
-// --host=0.0.0.0 --disable-host-check   
-//  host: process.env.MYSQL_HOST || "remotemysql.com",
-//     user: process.env.MYSQL_USER || "oGZSQM4dBE",
-//     password: process.env.MYSQL_PASS || "0m6TQoEFzG",
-//     database: process.env.MYSQL_DB || "oGZSQM4dBE", 
-

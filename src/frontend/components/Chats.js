@@ -7,10 +7,10 @@ import userPic from "../assets/icons/user.png";
 
 const Chats = (props) => {
   const { state, deleteSearch, setChat } = useContext(AppContext);
-  const { chat, chats, search, newMessages } = state;
+  const { chats, search, newMessages } = state;
 
   const [filterChats, setFilterChats] = useState(chats);
-  const [filterAct, setFilterAct] = useState(false);
+  // const [filterAct, setFilterAct] = useState(false);
 
   useEffect(() => {
     if (props.searchInp !== "") {
@@ -18,10 +18,10 @@ const Chats = (props) => {
         chat.name.toLowerCase().includes(props.searchInp.toLowerCase())
       );
       setFilterChats(filChat);
-      setFilterAct(true);
+      // setFilterAct(true);
     } else {
       setFilterChats(chats);
-      setFilterAct(false);
+      // setFilterAct(false);
       deleteSearch();
     }
   }, [props.searchInp, chats]);

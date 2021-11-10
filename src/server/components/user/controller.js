@@ -12,14 +12,11 @@ function getUser(filterName){
 }
 
 async function addUser(name){
-  console.log("name", name);
   if(!name){
     return Promise.reject('invalid name')
   }
   const taken = await store.list(TABLA, name)
-  console.log("taken", taken);
   if(taken){
-    console.log(false);
     return false
   }
   // const user = {name: name}
@@ -30,7 +27,7 @@ async function addUser(name){
 async function addAvatar(user, avatar){
   let fileUrl = ''
   if(avatar){
-    fileUrl = `${config.api.host}/files/avatars/${avatar.filename}`;
+    fileUrl = `files/avatars/${avatar.filename}`;
   }
   const data = store.addAvatar(TABLA, user, fileUrl);
   return {...data, file: fileUrl}

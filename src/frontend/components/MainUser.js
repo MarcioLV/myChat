@@ -2,8 +2,9 @@ import React, { useContext, useState } from "react";
 
 import { AppContext } from "../context/AppProvider";
 import FotoModal from "./fotoModal";
-import "./style/MainUser.css";
 import userPic from "../assets/icons/user.png";
+
+import "./style/MainUser.css";
 
 const MainUser = () => {
   const { state } = useContext(AppContext);
@@ -19,6 +20,10 @@ const MainUser = () => {
     setIsOpenedImg(false);
   };
 
+  const hola = (e) => {
+    console.log("e: " + e);
+  }
+
   let userImg = user.avatar ? user.avatar : userPic;
 
   return (
@@ -27,12 +32,10 @@ const MainUser = () => {
         <button onClick={openModalImg}>
           <figure className="mainUser-figure">
             <img
-              // ref={i}
               src={userImg}
               alt="mainUser-avatar"
               className={user.avatar ? "imgAvatar" : "notImgAvatar"}
-              // className="addPost-user-figure-img"
-              // onLoad={check}
+              onLoad={(e)=>hola(e)}
             />
           </figure>
         </button>

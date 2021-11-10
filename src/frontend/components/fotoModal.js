@@ -5,10 +5,8 @@ import closeIcon from "../assets/icons/cerrar-icon.png";
 
 import "./style/fotoModal.css";
 
-// const API_URL = `http://localhost:3000/api/`;
-import config from '../../../config'
-const API_URL = `${config.api.host}/${config.api.name}/`
-
+import config from '../config'
+const API_URL = `${config.api.host}/api/`
 
 import { AppContext } from "../context/AppProvider";
 
@@ -74,15 +72,6 @@ function FotoModal(props) {
       reader.readAsDataURL(img);
     }
   };
-
-  // const handleAddFoto = () => {
-  //   setLocked(!locked);
-  //   // if (id === "delete") {
-  //   //   setLocked(true);
-  //   // } else {
-  //   //   setLocked(false);
-  //   // }
-  // };
 
   const handleSubmit = async () => {
     let avatar;
